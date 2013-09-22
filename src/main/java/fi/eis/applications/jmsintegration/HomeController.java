@@ -26,10 +26,10 @@ public class HomeController {
         logger.info("Welcome home! The client locale is {}.", locale);
         try {
             jmsProducer.sendMessages();
-        }catch (Exception e){
+            return jmsProducer.receiveMessages();
+        } catch (Exception e){
             logger.error("error sending", e);
             return e.getMessage();
         }
-        return "HELLO";
     }
 }

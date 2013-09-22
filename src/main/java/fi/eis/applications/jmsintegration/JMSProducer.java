@@ -36,8 +36,8 @@ public class JMSProducer {
         });
     }
 
-    public void receiveMessages() throws JMSException{
-        System.out.println("Getting message from queue "+ jmsTemplate.receive().getStringProperty("text"));
+    public String receiveMessages() throws JMSException{
+        return jmsTemplate.receive().getStringProperty("text");
     }
 
 }
