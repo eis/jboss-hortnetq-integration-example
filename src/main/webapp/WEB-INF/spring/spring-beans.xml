@@ -30,6 +30,23 @@
         <constructor-arg ref="hornetConnectionFactory"/>
     </bean>
 
+    <!-- Replace the connection factory definition above with ones below, if you want to use
+         JMS Security -->
+    <!-- Commented out, left as an example -->
+    <!-- Configured user must be added as an application user in 'jmsrole' group --> 
+    <!-- 
+     <bean id="userCredsConnectionFactory" class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter">
+       <property name="targetConnectionFactory"><ref bean="hornetConnectionFactory"/></property>
+       <property name="username"><value>jmsuser</value></property>
+       <property name="password"><value>hornetq</value></property>
+     </bean>
+
+    <bean id="connectionFactory"
+        class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="userCredsConnectionFactory"/>
+    </bean>
+     -->
+
     <!-- Definition of the JMS queue -->
     <bean id="defaultDestination" class="org.hornetq.jms.client.HornetQQueue">
         <constructor-arg index="0" value="DemoQueue"></constructor-arg>
